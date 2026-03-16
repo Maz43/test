@@ -1,11 +1,41 @@
-<div align="center">
+# BidForge – Real-Time Auction Platform
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+BidForge is a full-stack auction platform featuring real-time bidding, credit-based economy, and AI-powered insights.
 
-  <h1>Built with AI Studio</h2>
+## Tech Stack
+- **Frontend**: React, Tailwind CSS, Framer Motion, Lucide Icons
+- **Backend**: Node.js, Express, Socket.io
+- **Database**: Supabase (PostgreSQL)
+- **AI**: Google Gemini API
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Setup Instructions
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+### 1. Database Setup (Supabase)
+1. Create a new project on [Supabase](https://supabase.com/).
+2. Go to the **SQL Editor** and run the contents of `supabase_schema.sql`.
+3. Go to **Project Settings > API** and copy your `URL` and `anon public` key.
 
-</div>
+### 2. Environment Variables
+Create a `.env` file (or use the AI Studio Secrets panel) with:
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+### 3. Installation
+```bash
+npm install
+```
+
+### 4. Running the App
+```bash
+npm run dev
+```
+
+## AI Features
+- **Admin**: "AI Generate" button in the creation modal uses Gemini to write professional item descriptions.
+- **Bidder**: "Smart Bid Suggestions" in the bidding modal suggests competitive bid values based on current activity.
+
+## Real-Time Logic
+The app uses **Socket.io** to broadcast bid updates instantly. When a user places a bid, all other users viewing that auction see the price update without refreshing.
